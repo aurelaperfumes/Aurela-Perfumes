@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Aurela Perfumes - Premium, long-lasting perfumes based in Kisumu, Kenya. We deliver countrywide with a wide collection of elegant fragrances."/>
+  <meta name="keywords" content="Aurela Perfumes, perfumes in Kisumu, luxury fragrance Kenya, buy perfumes Kenya, perfume delivery Kenya"/>
+  <meta name="author" content="Aurela Perfumes">
+  <title>Aurela Perfumes | Luxury Fragrances in Kisumu, Kenya</title>
+
+  <!-- Classy Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(to right, #0d1b2a, #1b263b);
+      color: gold;
+    }
+    h1, h2, h3 {
+      font-family: 'Cinzel', serif;
+    }
+    header {
+      background: #001f3f;
+      color: gold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .cart-btn {
+      background: gold;
+      border: none;
+      color: #001f3f;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cart-btn:hover {
+      background: #ffd700;
+    }
+    .theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: gold;
+  color: #001f3f;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+    .hero {
+      height: 100vh;
+      background: url('images/hero.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: gold;
+      position: relative;
+    }
+    .glass {
+      background: rgba(0,0,0,0.5);
+      padding: 3rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      animation: fadeInOut 3s ease-in-out infinite;
+    }
+    .btn {
+      margin-top: 2rem;
+      padding: 10px 25px;
+      border-radius: 30px;
+      background: gold;
+      color: #001f3f;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #ffd700;
+    }
+    .glow-box {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      color: gold;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold;
+      animation: glowPulse 2s infinite ease-in-out;
+      max-width: 250px;
+    }
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .product {
+      background-color: #001f3f;
+      padding: 1rem;
+      border-radius: 12px;
+      width: 200px;
+      color: gold;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .product:hover {
+      transform: scale(1.05);
+    }
+    .product img {
+  width: 10%;
+  height: 100px; /* maintains consistent height for all images */
+  object-fit: cover; /* ensures images fill the area nicely */
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+    .product p {
+      margin: 0.5rem 0;
+      font-weight: 600;
+    }
+    .product button {
+      background-color: gold;
+      color: #001f3f;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .product button:hover {
+      background-color: #ffd700;
+    }
+    #cart {
+      padding: 2rem;
+      background-color: #0d1b2a;
+      color: gold;
+      text-align: center;
+    }
+    #cart ul {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      margin: 0 auto 1rem auto;
+    }
+    #cart li {
+      text-align: left;
+      border-bottom: 1px solid gold;
+      padding: 0.5rem 0;
+    }
+    #blog {
+      background: url('images/blog_bg.jpg') no-repeat center center/cover;
+      padding: 4rem 2rem;
+      color: white;
+      text-shadow: 1px 1px 2px #000;
+    }
+    #contact, footer {
+      background-color: #001f3f;
+      color: gold;
+      text-align: center;
+      padding: 2rem;
+    }
+    .light-theme {
+      background: linear-gradient(to right, #ffffff, #f0f0f0);
+      color: #001f3f;
+    }
+    .light-theme header,
+    .light-theme .cart-btn,
+    .light-theme .btn,
+    .light-theme .glow-box {
+      background-color: #001f3f;
+      color: gold;
+    }
+    .light-theme .glass {
+      background: rgba(255, 255, 255, 0.6);
+      color: #001f3f;
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold; }
+      50% { box-shadow: 0 0 15px #ffe066, 0 0 25px #ffe066, 0 0 40px #ffe066; }
+      100% { box-shadow: 0 0 10px gold, 0 0 20px gold, 0 0 30px gold; }
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #001f3f;
+    color: gold;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 1000;
+  }
+  nav a {
+    color: gold;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #ffd700;
+  }
+  @media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product {
+    width: 90%;
+  }
+  .theme-toggle {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  #floating-cart {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+  #whatsapp-button {
+    bottom: 5rem;
+    right: 1rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+  }
+  .hero, .glass {
+    padding: 1rem;
+  }
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+  p, .btn {
+    font-size: 0.9rem;
+  }
+  .glass {
+    max-width: 90%;
+  }
+}
+  .product-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product {
+    width: 90%;
+  }
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+  }
+  #floating-cart {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  #whatsapp-button {
+    bottom: 5rem;
+    right: 1rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .hero, .glass {
+    padding: 1.5rem;
+  }
+
+    .product-list {
+      flex-direction: column;
+      align-items: center;
+    }
+    .product {
+      width: 90%;
+    }
+    .theme-toggle, #floating-cart, #whatsapp-button {
+  position: fixed;
+  bottom: 6rem;
+  right: 1.5rem;
+  background-color: #25D366;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+  
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+.typing {
+  border-right: 2px solid gold;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0% { border-color: gold; }
+  50% { border-color: transparent; }
+  100% { border-color: gold; }
+}
+</style>
+
+<script>
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+    }
+  function submitForm(event) {
+  event.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  const name = document.querySelector('input[placeholder="Full Name"]').value;
+  const phone = document.querySelector('input[placeholder="Phone Number"]').value;
+  const message = document.querySelector('textarea').value;
+  const whatsappURL = `https://wa.me/254115613094?text=Order%20from%20${encodeURIComponent(name)}%0APhone:%20${encodeURIComponent(phone)}%0AMessage:%20${encodeURIComponent(message)}`;
+  window.open(whatsappURL, '_blank');
+}
+  document.addEventListener("DOMContentLoaded", function () {
+    const faders = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(section => {
+      observer.observe(section);
+    });
+  });
+document.addEventListener("DOMContentLoaded", function () {
+  const headlines = document.querySelectorAll("section h2");
+  headlines.forEach(h => {
+    h.innerHTML = `<span class='typing'></span>`;
+    const text = h.textContent;
+    const span = h.querySelector('.typing');
+    span.textContent = "";
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        span.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, 50);
+      }
+    }
+    type();
+  });
+});
+</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <style>
+    .owl-carousel .item {
+      background-color: #001f3f;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      color: gold;
+      margin: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#cart">Cart</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <header>
+    <h1>Aurela Perfumes</h1>
+    <button class="cart-btn">🛒 <span>Cart</span></button>
+  </header>
+  <section class="hero">
+    <div class="glow-box">
+  <p>Experience elegance with every drop.<br>Fall in love with scents that define you.</p>
+</div>
+    <div class="glass">
+  <h1>Welcome to Aurela Perfumes</h1>
+  <p>Step into a world of timeless elegance and irresistible fragrance. Aurela Perfumes blends tradition and sophistication into every bottle. Our signature collection is designed for bold, graceful individuals who leave a lasting impression.</p>
+  <a href="#products" class="btn">View Collection</a>
+    </div>
+  </section>
+<section id="about" class="fade-in">
+  <h2>About Aurela Perfumes</h2>
+  <p style="max-width: 800px; margin: auto; font-size: 1.1rem; line-height: 1.8;">
+    🌟 Welcome to <strong>Aurela Perfumes</strong>, where fragrance meets elegance in every bottle. Proudly based in the vibrant city of <strong>Kisumu, Kenya</strong>, we are passionate about crafting and delivering exquisite fragrances designed to inspire and delight.<br><br>
+    🌿 Every perfume at Aurela tells a unique story, carefully blended to evoke memories, enhance confidence, and celebrate your individuality. Our commitment to quality ensures that each scent leaves an unforgettable impression.<br><br>
+    🚚 We deliver countrywide, ensuring your favorite scents reach you swiftly and securely. Experience the luxury of fragrance with Aurela—where each bottle is a testament to style, sophistication, and excellence.
+  </p>
+</section>
+
+<section id="testimonials" class="fade-in" style="padding: 2rem; background-color: #1b263b; color: gold; text-align: center;">
+  <h2>What Our Customers Say</h2>
+  <div class="owl-carousel">
+    <div class="item">
+      <p>🌟🌟🌟🌟🌟</p>
+      <p><strong>Stacy W.</strong><br>“Hayaati Belle is my go-to scent! Elegant, long-lasting, and unique.”</p>
+    </div>
+    <div class="item">
+      <p>🌟🌟🌟🌟🌟</p>
+      <p><strong>James K.</strong><br>“Delivery was super fast to Nairobi. The scent lasted the whole day!”</p>
+    </div>
+    <div class="item">
+      <p>🌟🌟🌟🌟🌟</p>
+      <p><strong>Lilian M.</strong><br>“Customer service was amazing. Got help choosing the perfect gift!”</p>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:4000,
+        responsive:{
+          0:{ items:1 },
+          600:{ items:2 },
+          1000:{ items:3 }
+        }
+      });
+    });
+  </script>
+</section>
+
+<section id="products" class="fade-in">
+  <h2>Our Perfume Collection</h2>
+  <div class="product-list">
+    <div class="product"><img src="IMG-20250116-WA0012.jpg" alt="Product Image"><p>Hayaati Belle - KSH 2500</p><button onclick="addToCart('Hayaati Belle', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0015.jpg" alt="Product Image"><p>Rose Seduction - KSH 2500</p><button onclick="addToCart('Rose Seduction', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250114-WA0051.jpg" alt="Product Image"><p>La Nuit Rose - KSH 2500</p><button onclick="addToCart('La Nuit Rose', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0004.jpg" alt="Product Image"><p>Away Perfume - KSH 2500</p><button onclick="addToCart('Away Perfume', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0005.jpg" alt="Product Image"><p>White Orchid - KSH 2500</p><button onclick="addToCart('White Orchid', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250321-WA0001.jpg" alt="Product Image"><p>Tempete Jacques Yves - KSH 2500</p><button onclick="addToCart('Tempete Jacques Yves', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0007.jpg" alt="Bint Hooran"><p>Bint Hooran - KSH 2500</p><button onclick="addToCart('Bint Hooran', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0008.jpg" alt="Black Leather"><p>Black Leather - KSH 2500</p><button onclick="addToCart('Black Leather', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0010.jpg" alt="Giorgio Pink"><p>Giorgio Pink - KSH 2500</p><button onclick="addToCart('Giorgia Pink', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0017.jpg" alt="Aventos Blue"><p>Aventos Blue - KSH 2500</p><button onclick="addToCart('Aventar Blue', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0019.jpg" alt="Amber and Noreli"><p>Amber and Noreli - KSH 2500</p><button onclick="addToCart('Amber and Musk', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0021 (1).jpg" alt="Hayaati Black"><p>Hayaati Black - KSH 2500</p><button onclick="addToCart('Hayaati Black', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250321-WA0024.jpg" alt="Barakkat Rouge SED"><p>Barakkat Rouge SED - KSH 2500</p><button onclick="addToCart('Bouquet Range SED', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250114-WA0055.jpg" alt="Mousuf Eau de Parfum"><p>Mousuf Eau de Parfum - KSH 2500</p><button onclick="addToCart('Mousuf Eau de Parfum', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250116-WA0028.jpg" alt="Mousuf Special Edition"><p>Mousuf Special Edition - KSH 2500</p><button onclick="addToCart('Mousuf Special Edition', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250114-WA0057.jpg" alt="Berries Weekend Pink"><p>Berries Weekend Pink - KSH 2500</p><button onclick="addToCart('Bonos Weekend Pink', 2500)">Add to Cart</button></div>
+    <div class="product"><img src="IMG-20250114-WA0070.jpg" alt="Invicto Victorious"><p>Invicto Victorious - KSH 2500</p><button onclick="addToCart('Invicto Victorious', 2500)">Add to Cart</button></div>
+  </div>
+</section>
+
+<section id="cart" class="fade-in">
+  <h2>Your Shopping Cart</h2>
+  <ul id="cart-items"></ul>
+  <p><strong>Total:</strong> KSH <span id="total-price">0</span></p>
+</section>
+
+<section id="blog" class="fade-in">
+  <img src="dcfe0d16c63f9660556db0c09319c148.jpg" alt="Aurela Perfume" style="width:100%; max-width:400px; height:auto; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.5); margin-bottom:1.5rem;">
+  <h2>From Our Blog</h2>
+  <p style="max-width:800px;margin:auto;line-height:1.8;font-size:1.1rem">
+    ✨ Perfume is more than just fragrance — it's the soul's whisper, your invisible aura, your signature.<br><br>
+    🖋️ At <strong>Aurela Perfumes</strong>, we believe every bottle is a story waiting to unfold. From floral notes to woody depths, each blend invites you on a personal journey.<br><br>
+    💡 Have you ever wondered why some fragrances last longer? It’s all about concentration and composition. Perfume oils and natural essences play an important role in the longevity and depth of each scent. Our perfumes use a perfect balance of premium ingredients to ensure your fragrance lasts throughout the day, giving you confidence from morning till night.<br><br>
+    🌷 Explore the art of scent layering: Start with lighter notes and gradually move toward deeper, richer tones. Mixing different perfumes can create a signature scent that's uniquely yours. Don't hesitate to experiment—every new combination is a new story waiting to be told.<br><br>
+    🎁 Need the perfect gift idea? Perfumes are timeless and personal, making them an ideal gift for any occasion. At Aurela, our experts can help you choose the right fragrance to convey exactly what you feel. Make every gift memorable with the magic of fragrance.<br><br>
+    💛 Stay tuned for more tips, tricks, and behind-the-scenes stories from our fragrance experts here in Kisumu. Let every spritz be a statement with Aurela Perfumes.
+  </p>
+</section>
+
+<section id="contact" class="fade-in">
+  <h2>Contact Us</h2>
+  <p>Email: <a href="mailto:aurelaprefumes@gmail.com">aurelaprefumes@gmail.com</a></p>
+  <p>Phone: +254 115 613094</p>
+  <p>Instagram: <a href="https://instagram.com/aurela.perfumeskenya" target="_blank">@aurela.perfumeskenya</a></p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Aurela Perfumes. All rights reserved.</p>
+  <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms & Conditions</a></p>
+</footer>
+
+<section id="faq" class="fade-in" style="padding: 2rem; background-color: #0d1b2a; color: gold;">
+  <h2>Delivery & FAQ</h2>
+  <p style="max-width: 800px; margin: auto; font-size: 1rem; line-height: 1.8;">
+    📦 <strong>Do you deliver countrywide?</strong><br>
+    Absolutely! We ship across Kenya using trusted local couriers.<br><br>
+
+    ⏱️ <strong>How long does delivery take?</strong><br>
+    Expect your scent in <strong>1–3 business days</strong>, depending on your location.<br><br>
+
+    💳 <strong>What payment methods do you accept?</strong><br>
+    M-Pesa, and cash on delivery where applicable.<br><br>
+
+    🔄 <strong>What’s your return policy?</strong><br>
+    Changed your mind? Return unopened items within 7 days for a smooth exchange or refund.
+  </p>
+</section>
+
+<section id="privacy" style="padding: 2rem; background-color: #0d1b2a; color: gold;">
+  <h2>Privacy Policy</h2>
+  <p style="max-width: 800px; margin: auto; line-height: 1.8; font-size: 1rem;">
+    At Aurela Perfumes, your privacy is very important to us. We collect only the necessary information to fulfill your orders and provide excellent customer service. We do not share your personal details with third parties unless required by law. All transactions and data shared are kept secure and confidential.
+  </p>
+</section>
+
+<section id="terms" style="padding: 2rem; background-color: #1b263b; color: gold;">
+  <h2>Terms & Conditions</h2>
+  <p style="max-width: 800px; margin: auto; line-height: 1.8; font-size: 1rem;">
+    By using our website and placing an order, you agree to our terms and conditions. Products are subject to availability. All prices are in Kenyan Shillings. Deliveries are made countrywide within reasonable timeframes. Refunds and exchanges are available for unused and sealed items within 7 days of purchase.
+  </p>
+</section>
+
+<section id="checkout" class="fade-in" style="padding: 2rem; text-align: center;">
+  <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 2rem; display: inline-block; box-shadow: 0 0 15px rgba(255,215,0,0.4); position: relative;">
+    <h2>Checkout 🛍️</h2>
+    <p style="max-width: 600px; margin: auto; font-size: 1.1rem;">
+      Ready to place your order? Enter your contact details below and we'll reach out swiftly to finalize your delivery!
+    </p>
+    <form style="max-width: 500px; margin: 2rem auto; display: flex; flex-direction: column; gap: 1rem;" onsubmit="submitForm(event)">
+      <input type="text" placeholder="Full Name" required style="padding: 0.75rem; border-radius: 8px; border: none;" />
+      <input type="tel" placeholder="Phone Number" required style="padding: 0.75rem; border-radius: 8px; border: none;" />
+      <input type="email" placeholder="Email Address" style="padding: 0.75rem; border-radius: 8px; border: none;" />
+      <textarea placeholder="Your Order or Questions..." rows="4" style="padding: 0.75rem; border-radius: 8px; border: none;"></textarea>
+      <button type="submit" style="padding: 0.75rem; border-radius: 30px; background: gold; color: #001f3f; font-weight: bold; border: none; cursor: pointer;">Submit Order 🚀</button>
+      <p id="form-success" style="display: none; color: lightgreen; font-weight: bold;">🎉 Thank you! We'll contact you shortly via WhatsApp.</p>
+    </form>
+    <div style="position: absolute; top: -15px; right: -15px; font-size: 2rem;">✨</div>
+  </div>
+</section>
+
+<script>
+  let cart = [];
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCart();
+  }
+  function updateCart() {
+    const cartList = document.getElementById("cart-items");
+    const totalPrice = document.getElementById("total-price");
+    cartList.innerHTML = "";
+    let total = 0;
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} - KSH ${item.price}`;
+      cartList.appendChild(li);
+      total += item.price;
+    });
+    totalPrice.textContent = total;
+  }
+</script>
+<div id="floating-cart" style="position: fixed; bottom: 1.5rem; right: 1.5rem; background: gold; color: #001f3f; padding: 1rem 1.5rem; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1.2rem; z-index: 999; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+  🛒
+</div>
+
+<script>
+  document.getElementById('floating-cart').addEventListener('click', () => {
+    document.getElementById('cart').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+<a href="https://wa.me/254115613094" target="_blank" id="whatsapp-button" title="Chat with us on WhatsApp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" style="width:35px;height:auto;vertical-align:middle;">
+  <span style="margin-left:8px; font-size:1rem; vertical-align:middle;">Chat with us</span>
+</a>
+
+<style>
+  #whatsapp-button {
+    position: fixed;
+    bottom: 6rem;
+    right: 1.5rem;
+    background-color: #25D366;
+    color: white;
+    font-size: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+    text-decoration: none;
+  }
+  #whatsapp-button:hover {
+    background-color: #1ebc5a;
+  }
+</style>
+</body>
+</html>
